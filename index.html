@@ -5,22 +5,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Duvan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <!--Codigo de css-->
+    <style>
+        body {
+            font-family: arial, sans-serif;
+            background: #833AB4;
+            background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container{
+            background-color: #e67575;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0px 0px 9px 4px rgba(0,0,0,0.8);
+        }
+
+        input[type="password"]
+        input[type="text"] {
+            width: 85%;
+            padding: 10px 40px 10px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            
+        }
+
+        #btn_validate{
+            background-color: rgb(109, 42, 116);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            box-shadow: 0px 0px 2px 0.5px rgba(0,0,0,0.8);
+            cursor: pointer;
+            transition: 0.5 all ease-in;
+        }
+
+        #btn_validate:hover{
+            background: #4b4b4b;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .toggle_password{
+            position: absolute;
+            cursor: pointer;
+            top: 50%;
+            right: 60px;
+            transform: translate();
+            color: #888;
+        }
+
+        .inputs{
+            position: relative;
+            width: 100%;
+        }
+
+        
+    </style>
 </head>
 
 <body onload="loadpage()">
     <div class="container">
+        <!--<h1>Duvan Angarita</h1>-->
         <h2>Validador de Contrasenas</h2>
         <div class="inputs">
             <input type="password" id="password" placeholder="Ingrese su contrasena">
-            <i></i>
+            <i class="fa-solid fa-eye"></i>
         </div>
-        <button onmousemove="validar()">Validar</button>
+        <button id="btn_validate" onmousemove="validar()">Validar</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        function validar() {
-            alert("El mouse: Bienvenido al sistema");
-        }
+        //function validar() {
+            //alert("El mouse: Bienvenido al sistema");
+        //}
 
         function loadpage() {
             Swal.fire({
@@ -31,6 +98,18 @@
                 timer: 3000
             });
         }
+
+        //Declaracion de variables
+        const toggle_password = document.getElementById("toggle_password");
+        const password = document.getElementById("password");
+
+        //Logica del show/hide password
+        toggle_password.addEventListener("click",()=>{
+            const type = password.type === "password" ? "text" : "password";
+            password.type = type;
+            toggle_password.classList.toggle("fa-eye")
+            toggle_password.classList.toggle("fa-eye-slash")
+        });
     </script>
 </body>
 
